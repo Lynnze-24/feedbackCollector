@@ -1,0 +1,54 @@
+<form (ngSubmit)="onSubmit()" #feedback="ngForm" >
+
+    <h3 style="text-align: center;">Feedback Form</h3>
+
+    <div class="question">
+        <p>1. Do you follow us on following social medias?</p>
+        <div class="checkboxWrapper">
+            <div class="checkboxCon"  *ngFor="let s of socials" >
+                <p-checkbox  name="social" [value]="s.name"  [inputId]="s.id" [(ngModel)]="followedSocials"></p-checkbox>
+                <label [for]="s.id">{{s.name}}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>2. How satisfied were you with our services?</p>
+        <div class="radioWrapper">
+            <div  *ngFor="let item of satisStats" class="radioCon">
+                <p-radioButton  [inputId]="item.id" name="satisfactory"  [value]="item.name" ngModel required></p-radioButton>
+                <label [for]="item.id">{{item.name}}</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="question selectCon"  >
+       
+           <p class="selectWrap">
+               <span>3. Best Service of Ours:</span>
+          
+                 <p-dropdown placeholder="Select a service" [options]="services"  name="services" optionValue="name" ngModel optionLabel="name" [required]="true"  ></p-dropdown>
+           </p>
+           <textarea required placeholder="Why do you think it's best..." class="tArea" name="reason" ngModel></textarea>
+        
+    </div>
+
+    <div class="question">
+        <p class="ratingCon">
+           <span>4. Rate your overall experience: </span> 
+            <p-rating class="pRating" name="rating" ngModel [cancel]="false" required></p-rating>
+        </p>
+        
+    </div>
+
+    <button class="submitBtn"  [disabled]="feedback.form.status!=='VALID'" type="submit">
+        Submit Feedback
+   </button>
+
+    <button type="button" (click)="clearForm()" class="clearBtn">
+        Clear
+    </button>
+    
+   
+   
+</form>

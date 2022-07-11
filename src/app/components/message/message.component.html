@@ -1,0 +1,3 @@
+<p  *ngIf="message" class="message {{type}}" [ngClass]="{'no-full-width': !fullParentWidth}" >{{message}} 
+    <span (click)="clearMessage()">x</span>
+</p>

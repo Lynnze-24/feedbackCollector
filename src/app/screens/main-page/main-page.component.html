@@ -1,0 +1,82 @@
+
+<div class="container">
+    <app-message
+            [fullParentWidth]="false" 
+            [message]="alertMessage" 
+            type="success" 
+            (onClearMsg)="clearAlertMsg()"
+    ></app-message>
+<h1>Feedback Collector</h1>
+<div class="wrapper">
+
+<div class="topbar">
+    <div class="topbar-input">
+        <input  type="text" placeholder="Search Username" [(ngModel)]="filterText" (keyup)="changeFilter()" pInputText>
+        <span *ngIf="filterText!==''" (click)="clearSearch()" class="input-clearBtn">x</span>
+    </div>
+    <div class="btnCon">
+            <button class="createUserBtn" (click)="openUserModal()"> Create User<i class="pi pi-user-plus"></i></button>
+            <button (click)="logOut()">Logout</button>
+    </div>
+</div>
+
+<p-dialog [modal]="true"
+          header="Create new user"  
+          (onHide)="userModalHide()"
+          [(visible)]="displayUserModal" [draggable]="false" 
+          styleClass="slowOpen">
+ <app-user-form [onHideModal]="onHideUserModal"></app-user-form>
+</p-dialog>
+<ag-grid-angular
+    #grid
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    style="width: 90vw;max-width: 80rem; height: 52rem"
+    class="ag-theme-alpine-dark gridCon"
+    [defaultColDef]="defaultColDef"
+    [suppressCellFocus]="true"
+    [animateRows]='true'
+    [suppressRowHoverHighlight]="true"
+    [pagination]="rowData.length>10?true:false"
+    [paginationAutoPageSize]="true"
+    
+>
+</ag-grid-angular>
+<p-dialog [modal]="true" header="Customer Details"  (onHide)="fbModalHide()"  [(visible)]="displayFbModal" [draggable]="false" styleClass="slowOpen">
+    <div class="userCon">
+        <div class="userCon-wrapper">
+         
+        <div class="avatar">
+           <img [src]="hasImageError?'../../../assets/avatar.jpg':modalItem.avatar" alt="avatar" 
+           (error)="onImageError()"
+           > 
+        </div>
+        <div class="userInfo">
+            <p> {{modalItem.name}}</p>
+            <p class="emailInfo"><i class="pi pi-envelope"></i> <span>{{modalItem.email}}</span></p>
+            <p><i class="pi pi-phone"></i> {{modalItem.phone}}</p>
+            <p *ngIf="modalItem?.location?.city"><i class="pi pi-home"></i> {{modalItem?.location?.city}}</p>
+            <p *ngIf="modalItem?.location?.country"><i class="pi pi-globe"></i> {{modalItem?.location?.country}}</p>
+        </div>
+           
+        </div>
+        <div class="feedbackCon">
+           <app-feedback-form 
+           [onHideModal]="onHideFbModal"
+           *ngIf="!modalItem.feedback;else fb" 
+           (onFeedback)="onFeedback($event)"
+           [name]="modalItem.name"
+           ></app-feedback-form>
+           <ng-template #fb>
+            <app-feedback [feedback]="modalItem.feedback" ></app-feedback>
+           </ng-template>
+        </div>
+    </div>
+    
+</p-dialog>
+
+    
+</div>
+
+    
+</div>

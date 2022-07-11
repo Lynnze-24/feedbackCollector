@@ -1,0 +1,92 @@
+form {
+  min-width: 30rem;
+  padding: 1rem;
+}
+
+.formControl {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pwCon,
+.pwCon input {
+  width: 100%;
+}
+
+.pwCon {
+  position: relative;
+}
+
+button {
+  background-color: black;
+  padding: 0 1.5rem;
+  height: 3rem;
+  line-height: 3rem;
+  color: white;
+  border-radius: 1rem;
+  align-self: center;
+  float: right;
+}
+
+button:hover {
+  box-shadow: 0 0 0.5rem 0.2rem var(--lcq);
+}
+
+button:disabled:hover {
+  box-shadow: none;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: var(--dg);
+}
+
+input.ng-untouched.ng-invalid,
+input {
+  border-color: var(--lcq);
+}
+
+.errorMessage {
+  font-size: 0.8rem;
+  color: var(--dg);
+  letter-spacing: 0.01rem;
+}
+
+.location {
+  display: flex;
+  gap: 1rem;
+}
+
+.location input {
+  flex: 1;
+}
+
+.mustFill {
+  position: relative;
+}
+
+.mustFill::after {
+  content: "*";
+  position: absolute;
+  top: -0.8rem;
+  left: -0.7rem;
+  color: var(--dg);
+  font-size: 1.3rem;
+}
+
+i {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--cp);
+}
+
+.clearBtn {
+  margin-right: 0.5rem;
+}
+
+button:disabled {
+  background-color: var(--dis);
+  cursor: not-allowed;
+}

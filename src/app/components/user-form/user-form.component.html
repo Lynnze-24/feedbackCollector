@@ -1,0 +1,54 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm" >
+    <!-- <app-message [message]="authMessage.message" [type]="authMessage.type" ></app-message> -->
+    <div class="formControl mustFill">
+        <input placeholder="Username" type="text" name="name" id="user"  ngModel required pInputText>
+        <div class="errorMessage" *ngIf="f.form.controls['name']?.touched">
+            <p  *ngIf="f.form.controls['name'].errors?.['required']" >Username Required!</p>
+        </div>
+    </div>
+
+    <div class="formControl mustFill">
+        <input placeholder="Email address" type="email" name="email" id="email"  email ngModel required pInputText>
+        <div class="errorMessage" *ngIf="f.form.controls['email']?.touched">
+            <p  *ngIf="f.form.controls['email'].errors?.['required']" >Email Required!</p>
+            <p *ngIf="f.form.controls['email'].errors?.['email']">Email Invalid!</p>
+        </div>
+       
+    </div>
+
+    <div class="formControl mustFill">
+        <input placeholder="Phone Number" type="text" name="phone" id="phone" maxlength="10" minlength="7" ngModel   required
+         pattern="[0-9]*" pInputText>
+        <div class="errorMessage" *ngIf="f.form.controls['phone']?.touched">
+            <p  *ngIf="f.form.controls['phone'].errors?.['required']" >Phone Number Required!</p>
+            <p  *ngIf="f.form.controls['phone'].errors?.['pattern']" >Phone Number should be only numbers.</p>
+            <p  *ngIf="f.form.controls['phone'].errors?.['minlength']" >Phone Number should have at least 7 numbers</p>
+           
+        </div>
+       
+    </div>
+
+    <div class="formControl">
+        <div class="location" ngModelGroup="location">
+            <input placeholder="City" type="text" name="city" id="city"   ngModel  pInputText>
+            <input placeholder="Country" type="text" name="country" id="country"   ngModel  pInputText>
+        </div>
+       
+    </div>
+
+    <div class="formControl">
+        <input placeholder="Image link" type="text" name="avatar" id="avatar"   ngModel  pInputText>
+    </div>
+    
+    <button  [disabled]="f.form.status!=='VALID'" class="createBtn"   type="submit">
+     
+        
+      <span>Create </span>
+    
+    </button>
+    
+    <button (click)="clearForm()" class="clearBtn"   type="button"> Clear</button>
+   
+   
+  
+</form>

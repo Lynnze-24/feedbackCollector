@@ -1,1 +1,205 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-alpine.css";
+
+/* ********************* */
+
+/************Theme****************** */
+html {
+  --cp: #f7f7f7;
+  --cs: #03d0ff;
+  --ct: #4c9ca1;
+  --cq: #0c0b0b;
+  --lcq: #1f1c1c77;
+  --dg: #e43737;
+  --ldg: #ffe7e6;
+  --dia: #495057;
+  --bor: #ced4da;
+  --ss: #1ea97c;
+  --lss: #e4f8f0;
+  --dis: rgb(212, 212, 205);
+
+  --fs: 1.2rem;
+}
+
+/* ****************************** */
+
+/* CSS modification for dependencies */
+.ag-cell-focus,
+.ag-cell-no-focus {
+  border: none !important;
+}
+/* This CSS is to not apply the border for the column having 'no-border' class */
+.no-border.ag-cell:focus {
+  border: none !important;
+}
+
+/* for border radius of grid */
+.ag-root-wrapper {
+  border-radius: 1rem;
+}
+
+/* for primeNg dialog */
+.p-dialog.slowOpen {
+  animation: slowOpen 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes slowOpen {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  10%,
+  30% {
+    transform: scale(0.1) rotateY(100deg) perspective(2000px);
+    opacity: 1;
+  }
+  20%,
+  40% {
+    transform: scale(0.15) rotateY(-100deg) rotateX(50deg) perspective(1000px);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg) rotateX(0deg) perspective(0px);
+  }
+}
+/* for radio prime NG */
+
+.p-radiobutton,
+.p-radiobutton .p-radiobutton-box {
+  width: 1rem;
+  height: 1rem;
+}
+
+.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+.p-checkbox .p-checkbox-box {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.p-checkbox .p-checkbox-box .p-checkbox-icon {
+  font-size: 0.7rem;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight,
+.p-radiobutton .p-radiobutton-box.p-highlight,
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover,
+.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover,
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  background-color: var(--lcq);
+  border-color: transparent;
+  box-shadow: 0 0 0.5rem 0.02rem var(--lcq);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+  border-color: transparent;
+}
+
+/* dropdown */
+
+.p-dropdown {
+  height: 2.5rem;
+  line-height: 0.7rem;
+}
+
+.service .p-dropdown {
+  min-width: 16rem;
+}
+
+.ng-touched.ng-invalid .p-dropdown {
+  border: 1px solid var(--dg);
+}
+
+.ng-touched.ng-valid .p-dropdown,
+.ng-untouched.ng-invalid .p-dropdown {
+  border: 1px solid var(--bor);
+}
+
+/* star rating */
+
+.p-rating .p-rating-icon.pi-star-fill {
+  color: var(--lcq);
+}
+
+/* ********************************************************** */
+
+/* *********Reset*********** */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  background-color: transparent;
+  outline: none;
+}
+
+/* *************************************** */
+
+/* *********Utilities*********** */
+
+:root {
+  font-size: 62.5%;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: black;
+}
+
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  max-width: 200rem;
+  margin: 0 auto;
+  letter-spacing: 0.1rem;
+  line-height: 1.9;
+  color: var(--cq);
+  background-color: var(--cp);
+  overflow: hidden;
+
+  /* radial-gradient(50% 158.02% at 50% 50%, #9fbaaf 0%, #6b5b6a 100%); */
+}
+
+::selection {
+  background-color: var(--cs);
+  color: var(--cp);
+}
+
+ul {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  font-weight: fw(light);
+  color: var(--cq);
+  font-size: var(--fs);
+}
+
+i {
+  font-size: var(--fs);
+  color: var(--cq);
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: none;
+  color: var(--cq);
+}
+
+/* *************************************** */

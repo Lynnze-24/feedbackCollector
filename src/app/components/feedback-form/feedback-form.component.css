@@ -1,0 +1,86 @@
+.radioWrapper,
+.checkboxWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.radioCon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkboxCon {
+  margin-top: 0.5rem;
+}
+
+.checkboxCon label {
+  bottom: 0.5rem;
+  position: relative;
+}
+
+.question {
+  margin-bottom: 1rem;
+}
+
+.selectWrap > span {
+  position: relative;
+  bottom: 0.7rem;
+  margin-right: 0.5rem;
+}
+
+.tArea {
+  width: 100%;
+  height: 5rem;
+  outline: none;
+  border-radius: 0.5rem;
+  border: 1px solid var(--bor);
+  resize: none;
+  padding: 1rem;
+  color: var(--dia);
+  font-size: 1rem;
+}
+
+.ratingCon {
+  display: flex;
+}
+
+.ratingCon span {
+  display: block;
+  margin-right: 1rem;
+}
+
+.ratingCon .pRating {
+  min-width: 9rem;
+}
+
+.submitBtn,
+.clearBtn {
+  float: right;
+  background-color: var(--lcq);
+  color: var(--cp);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.submitBtn:hover,
+.clearBtn:hover {
+  box-shadow: 0 0 0.3rem 0.1rem var(--lcq);
+}
+
+.clearBtn {
+  margin-right: 1rem;
+}
+
+button.submitBtn:disabled {
+  background-color: var(--dis);
+  cursor: not-allowed;
+}
+
+button.submitBtn:disabled:hover {
+  box-shadow: none;
+}
+
+.ng-touched.ng-invalid {
+  border-color: var(--dg);
+}

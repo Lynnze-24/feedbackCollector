@@ -1,0 +1,49 @@
+<div class="container">
+
+    <h1>Feedback Collector</h1>
+    
+    <form (ngSubmit)="onSubmit()" #f="ngForm" >
+        <app-message 
+        (onClearMsg)="clearAuthMsg()"
+            [message]="authMessage.message"
+            [type]="authMessage.type" >
+        
+        </app-message>
+
+        <div class="formControl">
+            <label for="email">Email Address</label>
+           
+            <input type="email" name="email" id="email"  email ngModel required pInputText>
+            <div class="errorMessage" *ngIf="f.form.controls['email']?.touched">
+                <p  *ngIf="f.form.controls['email'].errors?.['required']" >Email Required!</p>
+                <p *ngIf="f.form.controls['email'].errors?.['email']">Email Invalid!</p>
+            </div>
+           
+        </div>
+        
+        
+        <div class="formControl">
+            <label for="password">Password</label>
+           
+            <div class="pwCon">
+                <input [type]="showPw?'text':'password'" name="password"  id="password" ngModel pPassword [feedback]="false" required>
+                <i (click)="showPw= !showPw" class="pi " [ngClass]="showPw?'pi-eye':'pi-eye-slash'"></i>
+            </div>
+             
+            <div class="errorMessage" *ngIf="f.form.controls['password']?.touched">
+                <p  *ngIf="f.form.controls['password'].errors?.['required']" >Password Required!</p>
+            </div>
+        </div>
+       <button   [disabled]="f.form.status!=='VALID'" type="submit">
+        {{isLoginMode?"Login":"Sign up"}} 
+       </button>
+      
+    </form>
+    <p>{{isLoginMode?"Don't have an account?":"Already have an account?"}} 
+        <span (click)="isLoginMode = !isLoginMode" class="switchMode">
+            {{isLoginMode?"Sign up":"Login"}} 
+        </span>
+    </p>
+   
+</div>
+

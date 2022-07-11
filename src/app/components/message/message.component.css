@@ -1,0 +1,33 @@
+.message {
+  width: 100%;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.message span {
+  font-family: monospace;
+  font-size: 1.4rem;
+  margin-left: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.error {
+  background-color: var(--ldg);
+  color: var(--dg);
+}
+
+.success {
+  background-color: var(--lss);
+  color: var(--ss);
+}
+
+.no-full-width {
+  width: max-content;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}

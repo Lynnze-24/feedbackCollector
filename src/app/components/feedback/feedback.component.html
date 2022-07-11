@@ -1,0 +1,22 @@
+<h3 style="text-align: center;margin-bottom: 1rem;">Feedback from {{feedback?.name}}</h3>
+<ul style="list-style-type: square;padding-left: 1rem;">
+    
+    <li *ngIf="!!feedback?.social?.length">
+        <p >{{feedback?.name}} follows us on {{feedback?.social?.join(', ')}}. </p>
+    </li>
+    <li *ngIf="feedback?.social?.length===0">
+        <p >{{feedback?.name}} does not follow us on any social media platforms.</p>
+    </li>
+    <li>
+        <p>Customer satisfactory with our services: {{feedback?.satisfactory}}.</p>
+    </li>
+    <li>
+        <p>Overall experience rating: <p-rating name="rating" [ngModel]="feedback?.rating" [readonly]="true"  [cancel]="false"></p-rating> </p>
+    </li>
+    <li>
+        <p>{{feedback?.name}} thinks <q>{{feedback?.services}}</q> is our best service
+        and wrote <q>{{feedback?.reason}}.</q>
+        </p>
+    </li>
+</ul>
+
