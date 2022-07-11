@@ -1,7 +1,7 @@
 # FeedbackCollector
 
-Framework - Angular 13
-Component Library - PrimeNG
+Framework - Angular 13,
+Component Library - PrimeNG,
 Table - AgGrid
 
 A demo app that collects feedback from customers.
