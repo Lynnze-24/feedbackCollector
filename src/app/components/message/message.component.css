@@ -25,7 +25,10 @@
 
 .no-full-width {
   width: max-content;
+  height: max-content;
   margin: 1rem auto;
+  position: absolute;
+  inset: 0;
   padding: 0.5rem 1rem;
   margin-bottom: 0;
   font-size: 1.3rem;

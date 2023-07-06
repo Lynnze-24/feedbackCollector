@@ -39,19 +39,19 @@ export class MainPageComponent implements OnInit,OnDestroy {
   filterText:string = '';
 
   columnDefs: ColDef[] = [
-    { field: 'name'},
-    { field: 'email',
+    { field: 'name', width: 180 },
+    { field: 'email',flex:1,
       getQuickFilterText: () => {
         return '';
       } // convert to empty string because don't wanna filter this column
     },
-    { field: 'phone',
+    { field: 'phone', width: 150,
       getQuickFilterText: () => {
         return '';
       }// convert to empty string because don't wanna filter this column
     },
     {
-      field: 'id',headerName:'Detail', 
+      field: 'id',headerName:'Detail', width: 150, 
       cellRenderer: GridBtnComponent, 
       sortable: false,
       getQuickFilterText: () => {
@@ -64,7 +64,6 @@ export class MainPageComponent implements OnInit,OnDestroy {
   defaultColDef: ColDef= {
     sortable: true,
     filter: false,
-    flex:1,  // hide horizontal scrollbar 
     suppressMovable:true, // make it not draggable
     cellClass: 'no-border'  // custom css class to hide borders when click
   };

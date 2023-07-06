@@ -6,7 +6,7 @@
             type="success" 
             (onClearMsg)="clearAlertMsg()"
     ></app-message>
-<h1>Feedback Collector</h1>
+<h1 class="insightHead"><img src="../../../assets/logo.png" alt="logo" />Insight Sphere</h1>
 <div class="wrapper">
 
 <div class="topbar">
@@ -31,13 +31,13 @@
     #grid
     [rowData]="rowData"
     [columnDefs]="columnDefs"
-    style="width: 90vw;max-width: 80rem; height: 52rem"
+    style="width: 90vw;max-width: 80rem; height: 52rem;overflow: hidden;"
     class="ag-theme-alpine-dark gridCon"
     [defaultColDef]="defaultColDef"
     [suppressCellFocus]="true"
     [animateRows]='true'
     [suppressRowHoverHighlight]="true"
-    [pagination]="rowData.length>10?true:false"
+    [pagination]="rowData.length > 10"
     [paginationAutoPageSize]="true"
     
 >
@@ -53,10 +53,10 @@
         </div>
         <div class="userInfo">
             <p> {{modalItem.name}}</p>
-            <p class="emailInfo"><i class="pi pi-envelope"></i> <span>{{modalItem.email}}</span></p>
+            <p ><i class="pi pi-envelope"></i> {{modalItem.email}}</p>
             <p><i class="pi pi-phone"></i> {{modalItem.phone}}</p>
-            <p *ngIf="modalItem?.location?.city"><i class="pi pi-home"></i> {{modalItem?.location?.city}}</p>
-            <p *ngIf="modalItem?.location?.country"><i class="pi pi-globe"></i> {{modalItem?.location?.country}}</p>
+            <p *ngIf="modalItem?.location?.city"><i class="pi pi-home"></i> {{modalItem.location.city }}</p>
+            <p *ngIf="modalItem?.location?.country"><i class="pi pi-globe"></i> {{modalItem.location.country}}</p>
         </div>
            
         </div>

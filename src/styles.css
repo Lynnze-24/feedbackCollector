@@ -164,7 +164,6 @@ body {
   line-height: 1.9;
   color: var(--cq);
   background-color: var(--cp);
-  overflow: hidden;
 
   /* radial-gradient(50% 158.02% at 50% 50%, #9fbaaf 0%, #6b5b6a 100%); */
 }
@@ -203,3 +202,20 @@ button {
 }
 
 /* *************************************** */
+
+/* Center the headers */
+.ag-header-cell-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ag-cell:last-of-type{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

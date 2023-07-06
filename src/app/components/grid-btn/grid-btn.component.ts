@@ -10,12 +10,14 @@ import { fUser, UserService } from 'src/app/services/userService/user.service';
 })
 export class GridBtnComponent implements OnInit,ICellRendererAngularComp {
   id:string = '';
- 
+  hasFeedback:boolean = false;
 
   constructor(private userService: UserService) { }
 
   agInit(params:ICellRendererParams):void{
     this.id = params.value;
+    let item = this.userService.users.find((x)=> x.id=== this.id);
+    this.hasFeedback = item?.feedback? true : false;
   }
 
   refresh(params:ICellRendererParams):boolean{

@@ -1,14 +1,79 @@
 .container {
   display: flex;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.or{
+  position: absolute;
+  inset: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  line-height: 5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(245, 255, 129);
+  color: black;
+  margin: auto;
+}
+
+.leftCon,.rightCon{
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 100%;
-  min-height: 100vh;
+  width: 50%;
+}
+
+.rightCon{
+  background: linear-gradient(to right, rgb(57, 212, 181), rgb(245, 255, 129));
+  order: -1;
+}
+
+.rightCon img{
+  width: 15rem;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  color: white;
+   position: absolute;
+  top: 5rem;
+  left: 5rem;
+  font-size: 1.5rem;
+  gap: 0.5rem;
+}
+
+.logo img{
+  width: 3rem;
+}
+
+
+
+.switchCon{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+.switchCon p{
+  text-align: center;
 }
 
 h1 {
   margin-bottom: 2rem;
+  font-size: 2rem;
+  letter-spacing: 0.02rem;
+  font-weight: 300;
 }
 
 form {
@@ -21,11 +86,19 @@ form {
 }
 
 .formControl {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.formControl input{
+  font-size: 1.2rem;
+  color: black;
+  border: 0.2rem solid black;
 }
 
 .pwCon,
@@ -44,54 +117,42 @@ i {
   right: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
+  color: black;
+  font-weight: 600;
 }
 
 button {
-  background-color: black;
-  padding: 0.7rem 1.5rem;
+  background-color: transparent;
+  padding: 1rem 2.5rem;
   color: white;
+  font-weight: 400;
   border-radius: 1rem;
   align-self: center;
   position: relative;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
   z-index: 1;
   overflow: hidden;
-  border: 1px solid transparent;
+  font-size: 1.5rem;
+  border: 2px solid white;
+  margin-top: 3rem;
+  font-weight: 600;
 }
 
 button:not(:disabled):hover {
-  color: var(--cq);
-  border-color: var(--cq);
-}
-
-button::after,
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  color: rgb(84, 235, 167);
   background-color: white;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: -1;
 }
 
-button::after {
-  transform: translateY(5rem);
+form button{
+  background-color: rgb(67, 198, 172);
 }
 
-button::before {
-  top: 50%;
-  transform: translate(-50%, -5rem);
+form button:not(:disabled):hover{
+  border-color: rgb(137, 228, 187);
 }
 
-button:not(:disabled):hover:after,
-button:not(:disabled):hover:before {
-  transform: translateY(0);
-}
 
-button:disabled {
+button:disabled,form button:disabled {
   background-color: var(--dis);
   cursor: not-allowed;
 }
@@ -108,4 +169,48 @@ button:disabled {
   text-decoration: underline;
   margin-left: 0.5rem;
   cursor: pointer;
+}
+
+
+
+
+@media  screen and (max-width:650px) {
+    .container{
+      flex-direction: column;
+      gap: 0;
+      justify-content: flex-start;
+    }
+
+    .leftCon,.rightCon{
+      width: 100%;
+      height: max-content;
+    }
+
+    .leftCon{
+      padding-top: 15rem;
+    }
+
+    .rightCon{
+      order:1;
+      padding: 5rem 0;
+      justify-content: flex-start;
+    }
+
+    .switchCon{
+      justify-content: flex-start;
+      margin-top: 0;
+      padding: 0 1rem;
+    }
+
+    
+
+    .switchCon button{
+      margin-top: 1rem;
+    }
+
+    .logo p{
+      color: rgb(67, 198, 172);
+    }
+
+    
 }

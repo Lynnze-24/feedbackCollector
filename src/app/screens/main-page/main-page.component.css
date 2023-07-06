@@ -15,6 +15,21 @@
     linear-gradient(to right, #103d64, #f9ffcd);
 }
 
+.insightHead{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 3rem;
+}
+
+.insightHead img{
+  height: 7rem;
+}
+
+
+
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -39,18 +54,29 @@
 
 .userCon {
   display: flex;
-  gap: 2rem;
-  padding: 0 2rem;
+  gap: 2.5rem;
+}
+
+.userInfo p:first-of-type{
+  text-align: center;
+  width: 100%;
 }
 
 .userInfo p {
-  letter-spacing: 0.01rem;
+  letter-spacing: 0.05rem;
   line-height: 1.5rem;
   margin-top: 0.8rem;
+  max-width: 18rem;
+  width: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  font-size: 1.2rem;
 }
 
 .userInfo i {
   font-size: 1rem;
+  margin-right: 0.5rem;
 }
 
 .userInfo p:first-of-type {
@@ -62,7 +88,7 @@
 }
 
 .feedbackCon {
-  max-width: 31rem;
+  max-width: 38rem;
 }
 
 h1 {
@@ -146,10 +172,7 @@ h1 {
   gap: 0.5rem;
 }
 
-.emailInfo span {
-  max-width: 11rem;
-  word-wrap: break-word;
-}
+
 
 .createUserBtn i {
   color: var(--cp);
