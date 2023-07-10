@@ -8,6 +8,7 @@ button {
   overflow: hidden;
   z-index: 1;
   position: relative;
+  font-size: 1rem;
 }
 
 button::after {
@@ -32,16 +33,13 @@ button:hover i {
   color: var(--cq);
 }
 
-i {
+/* i {
   color: white;
   display: none;
-}
+} */
 
 @media only screen and (max-width: 500px) {
-  button span {
+  button span:last-of-type {
     display: none;
-  }
-  i {
-    display: block;
   }
 }

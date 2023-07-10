@@ -24,9 +24,12 @@
   margin-bottom: 1rem;
 }
 
+.selectWrap{
+  padding: 1rem 0;
+}
+
 .selectWrap > span {
   position: relative;
-  bottom: 0.7rem;
   margin-right: 0.5rem;
 }
 

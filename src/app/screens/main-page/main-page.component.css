@@ -185,3 +185,53 @@ h1 {
   margin-top: 1rem;
   width: max-content;
 }
+
+@media screen and (max-width: 500px) {
+  .userCon{
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+
+  .userCon-wrapper{
+    display: flex;
+    gap: 3rem;
+  }
+
+  .userInfo p{
+    max-width: max-content;
+  }
+
+  .avatar {
+    margin: 0;
+  }
+
+  .feedbackCon{
+    max-width: 100%;
+  }
+
+}
+
+
+
+@media screen and (max-width: 450px) {
+  .topbar-input input{
+    width: 15rem;
+  }
+
+  .createUserBtn span{
+    display: none;
+  }
+
+  .createUserBtn i{
+   margin-left: 0;
+  }
+
+  .insightHead{
+    font-size: 2rem;
+  }
+
+  .insightHead img{
+    height: 5rem;
+  }
+}
+

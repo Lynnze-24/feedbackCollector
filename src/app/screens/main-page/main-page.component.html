@@ -1,5 +1,5 @@
 
-<div class="container">
+<div  class="container">
     <app-message
             [fullParentWidth]="false" 
             [message]="alertMessage" 
@@ -15,7 +15,7 @@
         <span *ngIf="filterText!==''" (click)="clearSearch()" class="input-clearBtn">x</span>
     </div>
     <div class="btnCon">
-            <button class="createUserBtn" (click)="openUserModal()"> Create User<i class="pi pi-user-plus"></i></button>
+            <button class="createUserBtn" (click)="openUserModal()"> <span>Create User</span><i class="pi pi-user-plus"></i></button>
             <button (click)="logOut()">Logout</button>
     </div>
 </div>
