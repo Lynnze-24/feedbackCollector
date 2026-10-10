@@ -1,54 +1,45 @@
-<form (ngSubmit)="onSubmit()" #feedback="ngForm" >
+<form (ngSubmit)="onSubmit()" #feedback="ngForm" class="fbForm">
 
-    <h3 style="text-align: center;margin-bottom: 0.5rem;">Feedback Form</h3>
+    <h3 class="formTitle">Record feedback</h3>
 
-    <div class="question">
-        <p>1. Do you follow us on following social medias?</p>
-        <div class="checkboxWrapper">
-            <div class="checkboxCon"  *ngFor="let s of socials" >
-                <p-checkbox  name="social" [value]="s.name"  [inputId]="s.id" [(ngModel)]="followedSocials"></p-checkbox>
-                <label [for]="s.id">{{s.name}}</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="question">
-        <p>2. How satisfied were you with our services?</p>
-        <div class="radioWrapper">
-            <div  *ngFor="let item of satisStats" class="radioCon">
-                <p-radioButton  [inputId]="item.id" name="satisfactory"  [value]="item.name" ngModel required></p-radioButton>
+    <fieldset class="question">
+        <legend>1. How satisfied is {{name || 'the customer'}} with our services? <span class="req">*</span></legend>
+        <div class="choiceGrid">
+            <div *ngFor="let item of satisStats" class="choice">
+                <p-radioButton [inputId]="item.id" name="satisfactory" [value]="item.name" ngModel required></p-radioButton>
                 <label [for]="item.id">{{item.name}}</label>
             </div>
         </div>
-    </div>
-    
-    <div class="question selectCon"  >
-       
-           <p class="selectWrap">
-               <span>3. Best Service of Ours:</span>
-          
-                 <p-dropdown placeholder="Select a service" [options]="services"  name="services" optionValue="name" ngModel optionLabel="name" [required]="true"  ></p-dropdown>
-           </p>
-           <textarea required placeholder="Why do you think it's best..." class="tArea" name="reason" ngModel></textarea>
-        
+    </fieldset>
+
+    <fieldset class="question">
+        <legend>2. Overall experience <span class="req">*</span></legend>
+        <p-rating name="rating" ngModel [cancel]="false" required></p-rating>
+    </fieldset>
+
+    <fieldset class="question">
+        <legend>3. Which of our services is the best? <span class="req">*</span></legend>
+        <p-dropdown placeholder="Select a service" [options]="services" name="services" optionValue="name"
+            ngModel optionLabel="name" [required]="true" styleClass="fullWidth" appendTo="body"></p-dropdown>
+        <textarea required placeholder="Why do they think it's the best?" class="tArea" name="reason" ngModel
+            maxlength="300" rows="3" aria-label="Why it is the best service"></textarea>
+    </fieldset>
+
+    <fieldset class="question">
+        <legend>4. Which of our social channels do they follow?</legend>
+        <div class="choiceGrid">
+            <div class="choice" *ngFor="let s of socials">
+                <p-checkbox name="social" [value]="s.name" [inputId]="s.id" [(ngModel)]="followedSocials"></p-checkbox>
+                <label class="socialName" [for]="s.id">{{s.name}}</label>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="formActions">
+        <button type="button" (click)="clearForm()" class="btn btn-ghost">Clear</button>
+        <button class="btn btn-primary" [disabled]="feedback.form.status!=='VALID'" type="submit">
+            Save feedback
+        </button>
     </div>
 
-    <div class="question">
-        <p class="ratingCon">
-           <span>4. Rate your overall experience: </span> 
-            <p-rating class="pRating" name="rating" ngModel [cancel]="false" required></p-rating>
-        </p>
-        
-    </div>
-
-    <button class="submitBtn"  [disabled]="feedback.form.status!=='VALID'" type="submit">
-        Submit Feedback
-   </button>
-
-    <button type="button" (click)="clearForm()" class="clearBtn">
-        Clear
-    </button>
-    
-   
-   
 </form>

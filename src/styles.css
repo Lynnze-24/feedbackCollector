@@ -1,134 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "ag-grid-community/styles/ag-grid.css";
 @import "ag-grid-community/styles/ag-theme-alpine.css";
 
-/* ********************* */
+/* ********************* Theme ********************* */
+:root {
+  --primary: #0f8f7a;
+  --primary-dark: #0b7666;
+  --primary-soft: #e6f6f3;
+  --primary-ring: rgb(15 143 122 / 35%);
+  --ink: #0f172a;
+  --muted: #64748b;
+  --bg: #f4f7f6;
+  --card: #ffffff;
+  --surface-2: #f1f5f9;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --success: #15803d;
+  --success-soft: #f0fdf4;
 
-/************Theme****************** */
-html {
-  --cp: #f7f7f7;
-  --cs: #03d0ff;
-  --ct: #4c9ca1;
-  --cq: #0c0b0b;
-  --lcq: #1f1c1c77;
-  --dg: #e43737;
-  --ldg: #ffe7e6;
-  --dia: #495057;
-  --bor: #ced4da;
-  --ss: #1ea97c;
-  --lss: #e4f8f0;
-  --dis: rgb(212, 212, 205);
-
-  --fs: 1.2rem;
+  /* PrimeNG (lara) picks these up */
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --primary-color: var(--primary);
+  --primary-color-text: #ffffff;
+  --focus-ring: 0 0 0 3px var(--primary-ring);
 }
 
-/* ****************************** */
-
-/* CSS modification for dependencies */
-.ag-cell-focus,
-.ag-cell-no-focus {
-  border: none !important;
-}
-/* This CSS is to not apply the border for the column having 'no-border' class */
-.no-border.ag-cell:focus {
-  border: none !important;
-}
-
-/* for border radius of grid */
-.ag-root-wrapper {
-  border-radius: 1rem;
-}
-
-/* for primeNg dialog */
-.p-dialog.slowOpen {
-  animation: slowOpen 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-@keyframes slowOpen {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  10%,
-  30% {
-    transform: scale(0.1) rotateY(100deg) perspective(2000px);
-    opacity: 1;
-  }
-  20%,
-  40% {
-    transform: scale(0.15) rotateY(-100deg) rotateX(50deg) perspective(1000px);
-  }
-
-  100% {
-    transform: scale(1) rotate(0deg) rotateX(0deg) perspective(0px);
-  }
-}
-/* for radio prime NG */
-
-.p-radiobutton,
-.p-radiobutton .p-radiobutton-box {
-  width: 1rem;
-  height: 1rem;
-}
-
-.p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
-  width: 0.4rem;
-  height: 0.4rem;
-}
-
-.p-checkbox .p-checkbox-box {
-  width: 1.4rem;
-  height: 1.4rem;
-}
-
-.p-checkbox .p-checkbox-box .p-checkbox-icon {
-  font-size: 0.7rem;
-}
-
-.p-checkbox .p-checkbox-box.p-highlight,
-.p-radiobutton .p-radiobutton-box.p-highlight,
-.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover,
-.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover,
-.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
-  background-color: var(--lcq);
-  border-color: transparent;
-  box-shadow: 0 0 0.5rem 0.02rem var(--lcq);
-}
-
-.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
-  border-color: transparent;
-}
-
-/* dropdown */
-
-.p-dropdown {
-  height: 2.5rem;
-  line-height: 0.7rem;
-}
-
-.service .p-dropdown {
-  min-width: 16rem;
-}
-
-.ng-touched.ng-invalid .p-dropdown {
-  border: 1px solid var(--dg);
-}
-
-.ng-touched.ng-valid .p-dropdown,
-.ng-untouched.ng-invalid .p-dropdown {
-  border: 1px solid var(--bor);
-}
-
-/* star rating */
-
-.p-rating .p-rating-icon.pi-star-fill {
-  color: var(--lcq);
-}
-
-/* ********************************************************** */
-
-/* *********Reset*********** */
+/* ********************* Reset ********************* */
 *,
 *::after,
 *::before {
@@ -138,56 +36,37 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-*:focus {
-  background-color: transparent;
-  outline: none;
-}
-
-/* *************************************** */
-
-/* *********Utilities*********** */
-
-:root {
-  font-size: 62.5%;
-}
-
 html {
   scroll-behavior: smooth;
-  background-color: black;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  max-width: 200rem;
-  margin: 0 auto;
-  letter-spacing: 0.1rem;
-  line-height: 1.9;
-  color: var(--cq);
-  background-color: var(--cp);
-
-  /* radial-gradient(50% 158.02% at 50% 50%, #9fbaaf 0%, #6b5b6a 100%); */
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: var(--cs);
-  color: var(--cp);
+  background-color: var(--primary);
+  color: #fff;
 }
 
 ul {
   list-style: none;
 }
 
-a:link,
-a:visited {
+a {
+  color: var(--primary);
   text-decoration: none;
-  font-weight: fw(light);
-  color: var(--cq);
-  font-size: var(--fs);
 }
 
-i {
-  font-size: var(--fs);
-  color: var(--cq);
+img {
+  max-width: 100%;
 }
 
 button,
@@ -195,55 +74,336 @@ a {
   cursor: pointer;
 }
 
-button {
+:focus-visible {
+  outline: 2px solid var(--primary-ring);
+  outline-offset: 2px;
+}
+
+/* ********************* Buttons ********************* */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.6rem;
+  padding: 0 1.1rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 0.6rem;
+  border: 1px solid transparent;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.btn i {
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+.btn-sm {
+  height: 2.25rem;
+  padding: 0 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--primary);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn-ghost {
+  color: var(--ink);
+  background: var(--card);
+  border-color: var(--line-strong);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  box-shadow: var(--focus-ring);
   outline: none;
-  border: none;
-  color: var(--cq);
 }
 
-/* *************************************** */
+/* ********************* PrimeNG ********************* */
+.p-component,
+.p-inputtext {
+  font-family: var(--font-family);
+}
 
-/* Center the headers */
-.ag-header-cell-label {
+.p-inputtext {
+  height: 2.6rem;
+  padding: 0 0.8rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+  border-color: var(--line-strong);
+  border-radius: 0.6rem;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: var(--primary);
+}
+
+.p-inputtext:enabled:focus,
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+
+.p-dropdown {
+  border-color: var(--line-strong);
+  border-radius: 0.6rem;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  border-color: var(--primary);
+}
+
+.p-dropdown .p-dropdown-label {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  height: 2.5rem;
+  padding: 0 0.8rem;
+  font-size: 0.92rem;
 }
 
-.ag-cell:last-of-type{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.p-dropdown.fullWidth {
+  width: 100%;
 }
 
-
-
-@media screen and (max-width: 650px) {
-  .ag-cell-value{
-    font-size: 1rem;
-  }
-
-  
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  font-size: 0.92rem;
 }
 
-@media screen and (max-width: 500px) {
-  .p-dialog.slowOpen{
-    width: 100%;
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  color: var(--primary-dark);
+  background: var(--primary-soft);
+}
+
+.p-checkbox .p-checkbox-box.p-highlight,
+.p-radiobutton .p-radiobutton-box.p-highlight {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover,
+.p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus,
+.p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+
+.p-rating .p-rating-icon {
+  font-size: 1.35rem;
+  color: var(--line-strong);
+}
+
+.p-rating .p-rating-icon.pi-star-fill,
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+  color: #f59e0b;
+}
+
+.p-rating .p-rating-icon:focus {
+  box-shadow: var(--focus-ring);
+}
+
+.p-dialog.appDialog {
+  border-radius: 1rem;
+  box-shadow: 0 24px 64px rgb(15 23 42 / 22%);
+  overflow: hidden;
+}
+
+.p-dialog.appDialog .p-dialog-header {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.p-dialog.appDialog .p-dialog-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.p-dialog.appDialog .p-dialog-content {
+  padding: 1.4rem;
+  color: var(--ink);
+}
+
+.p-dialog.appDialog .p-dialog-footer {
+  padding: 0 1.4rem 1.2rem;
+}
+
+.p-dialog.appDialog .p-confirm-dialog-message {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.p-dialog.appDialog .p-confirm-dialog-icon {
+  font-size: 1.4rem;
+}
+
+.p-dialog.appDialog .p-button {
+  font-size: 0.88rem;
+  border-radius: 0.6rem;
+}
+
+.p-dialog.appDialog .p-button:not(.p-button-text):not(.p-button-danger) {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.p-dialog.appDialog .p-button.p-button-text {
+  color: var(--muted);
+}
+
+.p-component-overlay {
+  background-color: rgb(15 23 42 / 45%);
+}
+
+/* Full-screen sheets on phones */
+@media (max-width: 640px) {
+  .p-dialog.appDialog:not(.p-confirm-dialog) {
+    max-height: 100%;
     height: 100%;
-    min-height: 100vh;
-    overflow: auto;
-    border-radius:0;
+    border-radius: 0;
   }
 
-  .p-dialog .p-dialog-header,.p-dialog .p-dialog-content:last-of-type{
-    border-radius: 0!important;
-  }
-
-  .p-dialog .p-dialog-header{
-    padding-top: 5rem;
-    margin-bottom: -0.2rem;
+  .p-dialog.appDialog:not(.p-confirm-dialog) .p-dialog-content {
+    flex: 1;
+    padding: 1.2rem 1.1rem calc(1.5rem + env(safe-area-inset-bottom));
   }
 }
 
+/* ********************* AG Grid ********************* */
+.ag-theme-alpine {
+  --ag-font-family: var(--font-family);
+  --ag-font-size: 14px;
+  --ag-foreground-color: var(--ink);
+  --ag-secondary-foreground-color: var(--muted);
+  --ag-header-foreground-color: var(--muted);
+  --ag-header-background-color: var(--surface-2);
+  --ag-background-color: var(--card);
+  --ag-odd-row-background-color: var(--card);
+  --ag-row-hover-color: #f8fafc;
+  --ag-border-color: var(--line);
+  --ag-row-border-color: var(--line);
+  --ag-borders: solid 1px;
+  --ag-cell-horizontal-padding: 16px;
+}
 
+.ag-theme-alpine .ag-root-wrapper {
+  border-radius: 0.75rem;
+}
+
+.ag-theme-alpine .ag-header-cell-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ag-theme-alpine .ag-cell {
+  display: flex;
+  align-items: center;
+}
+
+/* let cell renderers shrink so long text gets an ellipsis */
+.ag-theme-alpine .ag-cell > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ag-cell-focus,
+.ag-cell-no-focus,
+.no-border.ag-cell:focus {
+  border: none !important;
+}
+
+.ag-theme-alpine .ag-paging-panel {
+  height: 44px;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .ag-theme-alpine .ag-paging-row-summary-panel {
+    display: none;
+  }
+  .ag-theme-alpine .ag-paging-panel {
+    justify-content: center;
+  }
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: 999px;
+}
+
+.statusPill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.statusPill.received {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+.statusPill.pending {
+  color: #b45309;
+  background: #fef3c7;
+}
+
+.gridStars {
+  color: #f59e0b;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.gridStars span {
+  color: var(--line-strong);
+}
+
+.gridMuted {
+  color: var(--muted);
+}
+
+.gridEmpty {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

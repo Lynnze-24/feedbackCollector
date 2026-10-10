@@ -1,4 +1,10 @@
-<button (click)="onClick()">
-   <span>{{hasFeedback? "View " : "Save "}}</span>  
-   <span>Feedback</span>
-</button>
+<div class="actions" *ngIf="user">
+    <button type="button" class="openBtn" [class.pending]="!user.feedback" (click)="open()"
+        [attr.aria-label]="(user.feedback ? 'View feedback from ' : 'Add feedback for ') + user.name">
+        <i class="pi" [ngClass]="user.feedback ? 'pi-eye' : 'pi-plus'"></i>
+        <span>{{user.feedback ? 'View' : 'Add feedback'}}</span>
+    </button>
+    <button type="button" class="deleteBtn" (click)="remove()" [attr.aria-label]="'Delete ' + user.name" title="Delete customer">
+        <i class="pi pi-trash"></i>
+    </button>
+</div>

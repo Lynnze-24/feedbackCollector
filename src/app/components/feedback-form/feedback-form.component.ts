@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 
@@ -15,6 +15,8 @@ export interface feedback{
   satisfactory:string;
   services:string;
   social:string[];
+  /** ISO timestamp; missing on feedback saved by older versions */
+  date?: string;
 }
 
 
@@ -23,28 +25,28 @@ export interface feedback{
   templateUrl: './feedback-form.component.html',
   styleUrls: ['./feedback-form.component.css']
 })
-export class FeedbackFormComponent implements OnInit {
+export class FeedbackFormComponent implements OnInit, OnDestroy {
   @ViewChild(NgForm) feedbackForm:NgForm = {} as NgForm;
   @Input() name:string = ''
-  @Input() onHideModal:Subject<void> = {} as Subject<void>;
+  @Input() onHideModal:Subject<void> = new Subject<void>();
   @Output() onFeedback = new EventEmitter<feedback>();
 
-  hideSub:Subscription = {} as Subscription;
+  hideSub:Subscription = new Subscription();
 
   followedSocials:string[]= [];
-  
+
   socials:format[] = [
                       {name:'twitter',id:'twt'},
                       {name:'linkedIn',id:'lkn'},
                       {name:'facebook',id:'fb'},
                       {name:'instagram',id:'insta'}
                     ]
-  
+
   satisStats: format[] = [
-                          {name: 'Delighted', id: 'dl'}, 
+                          {name: 'Delighted', id: 'dl'},
                           {name: 'OK', id: 'ok'},
-                          {name: 'Not at all', id: 'not'},
-                          {name: 'Undecided', id: 'und'}
+                          {name: 'Undecided', id: 'und'},
+                          {name: 'Not at all', id: 'not'}
                         ];
 
   services:format[] = [
@@ -52,12 +54,6 @@ export class FeedbackFormComponent implements OnInit {
                         {name:'Delivery Service',id:'DS'},
                         {name:'Supply Chain Service',id:'SS'}
                       ];
-  
-
-
-  constructor() {
-    
-   }
 
   ngOnInit(): void {
     this.hideSub = this.onHideModal.subscribe(()=>{
@@ -66,11 +62,24 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.onFeedback.emit({name:this.name,...this.feedbackForm.value})
+    if (this.feedbackForm.invalid) return;
+    const value = this.feedbackForm.value;
+    this.onFeedback.emit({
+      name: this.name,
+      ...value,
+      social: value.social || [],
+      reason: (value.reason || '').trim(),
+      date: new Date().toISOString(),
+    })
     this.clearForm();
   }
 
   clearForm(){
-    this.feedbackForm.resetForm()
+    this.followedSocials = [];
+    this.feedbackForm.resetForm?.()
+  }
+
+  ngOnDestroy(){
+    this.hideSub.unsubscribe()
   }
 }

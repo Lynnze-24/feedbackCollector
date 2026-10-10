@@ -1,16 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AuthServiceComponent,authMessage } from 'src/app/services/authService/auth-service.service';
-
-
+import { AuthServiceComponent, authMessage, DEMO_ACCOUNT } from 'src/app/services/authService/auth-service.service';
 
 
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.css'],
-  encapsulation: ViewEncapsulation.Emulated,
 })
 export class AuthPageComponent implements OnInit,OnDestroy {
 
@@ -18,7 +15,8 @@ export class AuthPageComponent implements OnInit,OnDestroy {
   showPw:boolean = false;
   isLoginMode:boolean = true;
   authMessage:authMessage = {} as authMessage;
-  authSub: Subscription = { } as Subscription;
+  authSub: Subscription = new Subscription();
+  demo = DEMO_ACCOUNT;
 
   constructor(private authService: AuthServiceComponent) { }
 
@@ -29,17 +27,25 @@ export class AuthPageComponent implements OnInit,OnDestroy {
   }
 
   onSubmit(){
-    let email = this.formVal.value.email;
-    let password = this.formVal.value.password;
     if(this.formVal.status!=='VALID')return;
-    
+    const { email, password } = this.formVal.value;
+
     if(this.isLoginMode){
       this.authService.login(email,password)
-    }else{
-      this.authService.signUp(email,password)
+      this.formVal.resetForm({ email })
+    }else if (this.authService.signUp(email,password)) {
       this.isLoginMode = true;
+      this.formVal.resetForm({ email })
     }
-    this.resetForm()
+  }
+
+  useDemo(){
+    this.authService.loginDemo();
+  }
+
+  switchMode(){
+    this.isLoginMode = !this.isLoginMode;
+    this.clearAuthMsg();
   }
 
   clearAuthMsg(){
@@ -47,11 +53,6 @@ export class AuthPageComponent implements OnInit,OnDestroy {
       message:'',
       type: 'error'
     });
-  }
-
-
-  resetForm(){
-   this.formVal.resetForm()
   }
 
   ngOnDestroy(){

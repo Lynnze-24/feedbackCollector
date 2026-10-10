@@ -1,45 +1,79 @@
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  height: 100%;
+}
+
 button {
-  color: white;
-  background-color: var(--cq);
-  padding: 0.7rem 1rem;
-  border-radius: 1rem;
-  line-height: normal;
-  transition: color 0.3s ease-in-out;
-  overflow: hidden;
-  z-index: 1;
-  position: relative;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2.1rem;
+  padding: 0 0.8rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 
-button::after {
-  content: "";
-  position: absolute;
-  background-color: var(--cp);
-  width: 100%;
-  height: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotateZ(-45deg);
-  z-index: -1;
-  transition: height 0.3s ease-in-out;
+button i {
+  font-size: 0.8rem;
+  color: inherit;
 }
 
-button:hover::after {
-  height: 400%;
+.openBtn {
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line-strong);
 }
 
-button:hover,
-button:hover i {
-  color: var(--cq);
+.openBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-/* i {
-  color: white;
-  display: none;
-} */
+.openBtn.pending {
+  color: #fff;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+}
 
-@media only screen and (max-width: 500px) {
-  button span:last-of-type {
+.openBtn.pending:hover {
+  color: #fff;
+  background: var(--primary-dark);
+}
+
+.deleteBtn {
+  width: 2.1rem;
+  padding: 0;
+  justify-content: center;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.deleteBtn:hover {
+  color: var(--danger);
+  background: #fee2e2;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--primary-ring);
+  outline-offset: 1px;
+}
+
+@media (max-width: 560px) {
+  .openBtn span {
     display: none;
+  }
+  .openBtn {
+    width: 2.1rem;
+    padding: 0;
+    justify-content: center;
   }
 }

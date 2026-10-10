@@ -1,36 +1,69 @@
 .message {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   width: 100%;
-  text-align: center;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0;
+  padding: 0.65rem 0.75rem 0.65rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+  border-radius: 0.6rem;
 }
 
-.message span {
-  font-family: monospace;
-  font-size: 1.4rem;
-  margin-left: 1rem;
-  font-weight: 500;
+.message > i {
+  font-size: 1rem;
+  color: inherit;
+}
+
+.text {
+  flex: 1;
+}
+
+button {
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0.4rem;
   cursor: pointer;
 }
 
+button:hover {
+  background: rgb(0 0 0 / 6%);
+}
+
+button i {
+  font-size: 0.75rem;
+  color: inherit;
+}
+
 .error {
-  background-color: var(--ldg);
-  color: var(--dg);
+  background-color: var(--danger-soft);
+  color: var(--danger);
 }
 
 .success {
-  background-color: var(--lss);
-  color: var(--ss);
+  background-color: var(--success-soft);
+  color: var(--success);
 }
 
-.no-full-width {
+.toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  z-index: 2000;
   width: max-content;
-  height: max-content;
-  margin: 1rem auto;
-  position: absolute;
-  inset: 0;
-  padding: 0.5rem 1rem;
-  margin-bottom: 0;
-  font-size: 1.3rem;
-  letter-spacing: 0.05rem;
+  max-width: calc(100vw - 2rem);
+  transform: translateX(-50%);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 18%);
+  animation: toastIn 0.2s ease-out;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, -0.5rem); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }

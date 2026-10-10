@@ -1,67 +1,79 @@
 <div class="container">
-    <div class="leftCon">
-        <h1> {{!isLoginMode?"Create an account":"Sign in to Insight Sphere"}} </h1>
-        
-        <form (ngSubmit)="onSubmit()" #f="ngForm" >
-            <app-message 
-            (onClearMsg)="clearAuthMsg()"
-                [message]="authMessage.message"
-                [type]="authMessage.type" >
-            
-            </app-message>
-
-            <div class="formControl">
-                <label for="email">Email Address</label>
-            
-                <input type="email" name="email" id="email"  email ngModel required pInputText>
-                <div class="errorMessage" *ngIf="f.form.controls['email']?.touched">
-                    <p  *ngIf="f.form.controls['email'].errors?.['required']" >Email Required!</p>
-                    <p *ngIf="f.form.controls['email'].errors?.['email']">Email Invalid!</p>
-                </div>
-            
-            </div>
-            
-            
-            <div class="formControl">
-                <label for="password">Password</label>
-            
-                <div class="pwCon">
-                    <input [type]="showPw?'text':'password'" name="password"  id="password" ngModel pPassword [feedback]="false" required>
-                    <i (click)="showPw= !showPw" class="pi " [ngClass]="showPw?'pi-eye':'pi-eye-slash'"></i>
-                </div>
-                
-                <div class="errorMessage" *ngIf="f.form.controls['password']?.touched">
-                    <p  *ngIf="f.form.controls['password'].errors?.['required']" >Password Required!</p>
-                </div>
-            </div>
-        <button   [disabled]="f.form.status!=='VALID'" type="submit">
-            {{isLoginMode?"Sign in":"Sign up"}} 
-        </button>
-        
-        </form>
-        
-   </div>
-   <div class="rightCon">
+    <aside class="brandPanel">
         <div class="logo">
-              <img src="../../../assets/logo.png" alt="logo">
-              <p>Insight Sphere</p>
+            <img src="assets/logo.png" alt="" width="40" height="40">
+            <span>Insight Sphere</span>
         </div>
-      <img src="../../../assets/slogan.png" alt="insightSphere" >
-       
-       <div class="switchCon"  *ngIf="isLoginMode;else signin" >
-        <h2>{{"New Here?"}}</h2>
-        <p>Join Us Today to collect feedbacks of multiple customers for your company.</p>
-        <button (click)="isLoginMode = !isLoginMode">Sign up</button>
-       </div>
-       <ng-template #signin>
-            <div class="switchCon">
-                <h2>{{"Existing User?"}}</h2>
-                <p>Please login with your personal info to stay connected with the feedbacks you collected.</p>
-                <button (click)="isLoginMode = !isLoginMode">Sign in</button>
-            </div> 
-       </ng-template>
-        
-   </div>
-   
-</div>
+        <div class="brandBody">
+            <img class="slogan" src="assets/slogan.png" alt="Insight Sphere">
+            <h2>Collect customer feedback. <br>See what it means.</h2>
+            <ul class="perks">
+                <li><i class="pi pi-check-circle"></i> Keep every customer in one searchable table</li>
+                <li><i class="pi pi-check-circle"></i> Record satisfaction, ratings and comments</li>
+                <li><i class="pi pi-check-circle"></i> Spot trends with live charts and CSV export</li>
+            </ul>
+        </div>
+    </aside>
 
+    <main class="formPanel">
+        <div class="formCard">
+            <h1>{{ isLoginMode ? 'Sign in to Insight Sphere' : 'Create your account' }}</h1>
+            <p class="subtitle">{{ isLoginMode ? 'Welcome back! Enter your details to continue.' : 'It takes a few seconds and no credit card.' }}</p>
+
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <app-message
+                    (onClearMsg)="clearAuthMsg()"
+                    [message]="authMessage.message"
+                    [type]="authMessage.type">
+                </app-message>
+
+                <div class="formControl">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" id="email" email ngModel required pInputText
+                        autocomplete="email" placeholder="you@company.com">
+                    <small class="errorMessage" *ngIf="f.form.controls['email']?.touched">
+                        <ng-container *ngIf="f.form.controls['email'].errors?.['required']">Email is required.</ng-container>
+                        <ng-container *ngIf="f.form.controls['email'].errors?.['email']">Enter a valid email address.</ng-container>
+                    </small>
+                </div>
+
+                <div class="formControl">
+                    <label for="password">Password</label>
+                    <div class="pwCon">
+                        <input [type]="showPw ? 'text' : 'password'" name="password" id="password" ngModel required
+                            pInputText [minlength]="isLoginMode ? 1 : 6"
+                            [autocomplete]="isLoginMode ? 'current-password' : 'new-password'"
+                            [placeholder]="isLoginMode ? 'Your password' : 'At least 6 characters'">
+                        <button type="button" class="pwToggle" (click)="showPw = !showPw"
+                            [attr.aria-label]="showPw ? 'Hide password' : 'Show password'">
+                            <i class="pi" [ngClass]="showPw ? 'pi-eye-slash' : 'pi-eye'"></i>
+                        </button>
+                    </div>
+                    <small class="errorMessage" *ngIf="f.form.controls['password']?.touched">
+                        <ng-container *ngIf="f.form.controls['password'].errors?.['required']">Password is required.</ng-container>
+                        <ng-container *ngIf="f.form.controls['password'].errors?.['minlength']">Use at least 6 characters.</ng-container>
+                    </small>
+                </div>
+
+                <button class="btn btn-primary submit" [disabled]="f.form.status !== 'VALID'" type="submit">
+                    {{ isLoginMode ? 'Sign in' : 'Create account' }}
+                </button>
+            </form>
+
+            <div class="divider"><span>or</span></div>
+
+            <button type="button" class="btn btn-ghost demoBtn" (click)="useDemo()">
+                <i class="pi pi-bolt"></i> Explore with the demo account
+            </button>
+
+            <p class="switchMode">
+                {{ isLoginMode ? 'New here?' : 'Already have an account?' }}
+                <button type="button" class="linkBtn" (click)="switchMode()">
+                    {{ isLoginMode ? 'Create an account' : 'Sign in' }}
+                </button>
+            </p>
+
+            <p class="note"><i class="pi pi-info-circle"></i> This is a demo app. Accounts and data are stored only in this browser.</p>
+        </div>
+    </main>
+</div>

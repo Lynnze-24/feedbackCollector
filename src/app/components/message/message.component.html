@@ -1,3 +1,6 @@
-<p  *ngIf="message" class="message {{type}}" [ngClass]="{'no-full-width': !fullParentWidth}" >{{message}} 
-    <span (click)="clearMessage()">x</span>
+<p *ngIf="message" class="message {{type}}" [ngClass]="{'toast': !fullParentWidth}"
+   [attr.role]="type === 'error' ? 'alert' : 'status'">
+    <i class="pi" [ngClass]="type === 'error' ? 'pi-exclamation-circle' : 'pi-check-circle'"></i>
+    <span class="text">{{message}}</span>
+    <button type="button" (click)="clearMessage()" aria-label="Dismiss message"><i class="pi pi-times"></i></button>
 </p>

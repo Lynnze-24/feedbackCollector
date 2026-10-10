@@ -1,59 +1,143 @@
 import { fUser } from "./user.service";
 
-export const dummyUsers:fUser[] = [
-    {
-       name:'Brian James',
-       avatar:'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-       email:'aunghtetlinn.yit@gmail.com',
-       phone:'+9593338429',
-       location:{
-        city:'New York',
-        country:'USA'
-       },
-       id: 'BJ12222',
-       feedback:{
-        name:'Brian James',
-        rating: 1,
-        reason: 'very fast',
-        satisfactory:'Not at all',
-        services: 'Delivery Service',
-        social:[]
-      }
-    },
-    {
-      name:'Gareth Bale',
-      avatar:'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-      email:'b@gmail.com',
-      phone:'+9542211232',
-      location:{
-        city:'London',
-        country:'England'
-       },
-      id: 'GB677777',
-      feedback:null
-   },
-   {
-    name:'Sara Lance',
-    avatar:'https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-    email:'c@gmail.com',
-    phone:'+9542689012',
-    location:{
-      city:'Berlin',
-      country:'Germany'
-     },
-    id:'SL90922',
-    feedback:null
- },
+// Demo customers. All names, emails and phone numbers are made up.
+export const dummyUsers: fUser[] = [
   {
-    name:'Alex Kane',
-    avatar:'',
-    email:'alexKane98099@gmail.com',
-    phone:'+9576288309',
-    location:{
-      city:'Yangon',
-      country:'Myanmar'
-     },
+    name: 'Brian James',
+    avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80',
+    email: 'brian.james@example.com',
+    phone: '+12025550143',
+    location: { city: 'New York', country: 'USA' },
+    id: 'BJ12222',
+    feedback: {
+      name: 'Brian James',
+      rating: 2,
+      reason: 'Fast, but my parcel arrived a day after the promised date',
+      satisfactory: 'Not at all',
+      services: 'Delivery Service',
+      social: [],
+      date: '2023-06-12T09:30:00.000Z',
+    },
+  },
+  {
+    name: 'Gareth Bale',
+    avatar: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80',
+    email: 'gareth.bale@example.com',
+    phone: '+442079460321',
+    location: { city: 'London', country: 'England' },
+    id: 'GB677777',
+    feedback: null,
+  },
+  {
+    name: 'Sara Lance',
+    avatar: 'https://images.unsplash.com/photo-1518577915332-c2a19f149a75?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80',
+    email: 'sara.lance@example.com',
+    phone: '+493012345678',
+    location: { city: 'Berlin', country: 'Germany' },
+    id: 'SL90922',
+    feedback: {
+      name: 'Sara Lance',
+      rating: 5,
+      reason: 'Checkout is quick and the order tracking is clear',
+      satisfactory: 'Delighted',
+      services: 'Ecommerce service',
+      social: ['instagram', 'twitter'],
+      date: '2023-06-28T14:05:00.000Z',
+    },
+  },
+  {
+    name: 'Alex Kane',
+    avatar: '',
+    email: 'alex.kane@example.com',
+    phone: '+959420001234',
+    location: { city: 'Yangon', country: 'Myanmar' },
     id: 'AK990092282',
-    feedback:null
-},
-  ];
+    feedback: null,
+  },
+  {
+    name: 'Mia Chen',
+    avatar: '',
+    email: 'mia.chen@example.com',
+    phone: '+6581234567',
+    location: { city: 'Singapore', country: 'Singapore' },
+    id: 'MC20481',
+    feedback: {
+      name: 'Mia Chen',
+      rating: 4,
+      reason: 'Stock levels are always accurate, so we never oversell',
+      satisfactory: 'Delighted',
+      services: 'Supply Chain Service',
+      social: ['linkedIn'],
+      date: '2023-07-02T03:40:00.000Z',
+    },
+  },
+  {
+    name: 'Lucas Martin',
+    avatar: '',
+    email: 'lucas.martin@example.com',
+    phone: '+33142685300',
+    location: { city: 'Paris', country: 'France' },
+    id: 'LM55102',
+    feedback: {
+      name: 'Lucas Martin',
+      rating: 3,
+      reason: 'Couriers are friendly and the delivery windows are easy to pick',
+      satisfactory: 'OK',
+      services: 'Delivery Service',
+      social: ['facebook'],
+      date: '2023-07-04T11:15:00.000Z',
+    },
+  },
+  {
+    name: 'Priya Nair',
+    avatar: '',
+    email: 'priya.nair@example.com',
+    phone: '+919812345678',
+    location: { city: 'Bengaluru', country: 'India' },
+    id: 'PN71820',
+    feedback: {
+      name: 'Priya Nair',
+      rating: 5,
+      reason: 'The storefront builder saved us weeks of work',
+      satisfactory: 'Delighted',
+      services: 'Ecommerce service',
+      social: ['linkedIn', 'twitter', 'instagram'],
+      date: '2023-07-06T07:50:00.000Z',
+    },
+  },
+  {
+    name: 'Tom Walker',
+    avatar: '',
+    email: 'tom.walker@example.com',
+    phone: '+61291234567',
+    location: { city: 'Sydney', country: 'Australia' },
+    id: 'TW30917',
+    feedback: null,
+  },
+  {
+    name: 'Hana Sato',
+    avatar: '',
+    email: 'hana.sato@example.com',
+    phone: '+81312345678',
+    location: { city: 'Tokyo', country: 'Japan' },
+    id: 'HS88213',
+    feedback: {
+      name: 'Hana Sato',
+      rating: 4,
+      reason: 'Warehouse handover is smooth and well documented',
+      satisfactory: 'OK',
+      services: 'Supply Chain Service',
+      social: [],
+      date: '2023-07-08T05:20:00.000Z',
+    },
+  },
+  {
+    name: 'Diego Ruiz',
+    avatar: '',
+    email: 'diego.ruiz@example.com',
+    phone: '+34911234567',
+    location: { city: 'Madrid', country: 'Spain' },
+    id: 'DR43350',
+    feedback: null,
+  },
+];

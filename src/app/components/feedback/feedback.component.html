@@ -1,22 +1,33 @@
-<h3 style="text-align: center;margin-bottom: 1rem;">Feedback from {{feedback?.name}}</h3>
-<ul style="list-style-type: square;padding-left: 1rem;">
-    
-    <li *ngIf="!!feedback?.social?.length">
-        <p >{{feedback?.name}} follows us on {{feedback?.social?.join(', ')}}. </p>
-    </li>
-    <li *ngIf="feedback?.social?.length===0">
-        <p >{{feedback?.name}} does not follow us on any social media platforms.</p>
-    </li>
-    <li>
-        <p>Customer satisfactory with our services: {{feedback?.satisfactory}}.</p>
-    </li>
-    <li>
-        <p>Overall experience rating: <p-rating name="rating" [ngModel]="feedback?.rating" [readonly]="true"  [cancel]="false"></p-rating> </p>
-    </li>
-    <li>
-        <p>{{feedback?.name}} thinks <q>{{feedback?.services}}</q> is our best service
-        and wrote <q>{{feedback?.reason}}.</q>
-        </p>
-    </li>
-</ul>
+<section class="fbView" *ngIf="feedback">
+    <div class="fbHead">
+        <h3>Feedback</h3>
+        <span class="date" *ngIf="feedback.date">{{feedback.date | date:'mediumDate'}}</span>
+    </div>
 
+    <dl class="facts">
+        <div>
+            <dt>Satisfaction</dt>
+            <dd><span class="mood" [ngClass]="mood">{{feedback.satisfactory}}</span></dd>
+        </div>
+        <div>
+            <dt>Overall rating</dt>
+            <dd class="ratingRow">
+                <p-rating [ngModel]="feedback.rating" [readonly]="true" [cancel]="false"></p-rating>
+                <span>{{feedback.rating}}/5</span>
+            </dd>
+        </div>
+        <div>
+            <dt>Best service</dt>
+            <dd>{{feedback.services}}</dd>
+        </div>
+        <div>
+            <dt>Follows us on</dt>
+            <dd>
+                <span *ngIf="!feedback.social?.length" class="muted">No social channels</span>
+                <span class="chip" *ngFor="let s of feedback.social">{{s}}</span>
+            </dd>
+        </div>
+    </dl>
+
+    <blockquote *ngIf="feedback.reason">“{{feedback.reason}}”</blockquote>
+</section>

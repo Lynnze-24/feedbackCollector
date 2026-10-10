@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/userService/user.service';
+import { Component, Input } from '@angular/core';
 import { feedback } from '../feedback-form/feedback-form.component';
 
 @Component({
@@ -7,15 +6,16 @@ import { feedback } from '../feedback-form/feedback-form.component';
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.css']
 })
-export class FeedbackComponent implements OnInit {
+export class FeedbackComponent {
 
   @Input() feedback:feedback | null = null;
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
+  get mood(): string {
+    switch (this.feedback?.satisfactory) {
+      case 'Delighted': return 'good';
+      case 'Not at all': return 'bad';
+      default: return 'neutral';
+    }
   }
-
-
 
 }

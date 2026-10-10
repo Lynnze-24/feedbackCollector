@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRouterModule } from './router/app-router-moudule';
 import {InputTextModule} from 'primeng/inputtext';
-import {PasswordModule} from 'primeng/password';
 import { MessageComponent } from './components/message/message.component';
 import { AuthPageComponent } from './screens/auth-page/auth-page.component';
 import { MainPageComponent } from './screens/main-page/main-page.component';
@@ -17,8 +16,12 @@ import { FeedbackFormComponent } from './components/feedback-form/feedback-form.
 import {CheckboxModule} from 'primeng/checkbox';
 import {DropdownModule} from 'primeng/dropdown';
 import {RatingModule} from 'primeng/rating';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { InsightsComponent } from './components/insights/insights.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import { CustomerCellComponent } from './components/customer-cell/customer-cell.component';
 
 
 @NgModule({
@@ -31,6 +34,9 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     FeedbackFormComponent,
     FeedbackComponent,
     UserFormComponent,
+    InsightsComponent,
+    AvatarComponent,
+    CustomerCellComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,13 +44,13 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     AppRouterModule,
     FormsModule,
     InputTextModule,
-    PasswordModule,
     AgGridModule,
     DialogModule,
     RadioButtonModule,
     CheckboxModule,
     DropdownModule,
-    RatingModule
+    RatingModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

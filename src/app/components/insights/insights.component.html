@@ -1,0 +1,82 @@
+<section class="stats" aria-label="Summary">
+    <article class="stat">
+        <span class="statIcon teal"><i class="pi pi-users"></i></span>
+        <div>
+            <p class="statLabel">Customers</p>
+            <p class="statValue">{{insights.customers}}</p>
+        </div>
+    </article>
+    <article class="stat">
+        <span class="statIcon blue"><i class="pi pi-inbox"></i></span>
+        <div>
+            <p class="statLabel">Responses</p>
+            <p class="statValue">{{insights.responses}}<small> / {{insights.customers}}</small></p>
+            <div class="meter" role="img" [attr.aria-label]="insights.responseRate + '% responded'">
+                <span [style.width.%]="insights.responseRate"></span>
+            </div>
+        </div>
+    </article>
+    <article class="stat">
+        <span class="statIcon amber"><i class="pi pi-star-fill"></i></span>
+        <div>
+            <p class="statLabel">Average rating</p>
+            <p class="statValue">{{insights.averageRating ?? '–'}}<small *ngIf="insights.averageRating !== null"> / 5</small></p>
+            <p class="stars" aria-hidden="true"><i *ngFor="let s of filledStars" class="pi" [ngClass]="s ? 'pi-star-fill' : 'pi-star'"></i></p>
+        </div>
+    </article>
+    <article class="stat">
+        <span class="statIcon green"><i class="pi pi-heart-fill"></i></span>
+        <div>
+            <p class="statLabel">Delighted</p>
+            <p class="statValue">{{insights.delightedRate === null ? '–' : insights.delightedRate + '%'}}</p>
+            <p class="statNote" *ngIf="topService">Top service: {{topService}}</p>
+        </div>
+    </article>
+</section>
+
+<section class="charts" aria-label="Feedback breakdown" *ngIf="insights.responses; else noFeedback">
+    <article class="chartCard">
+        <h3>Satisfaction</h3>
+        <div class="stacked" role="img" aria-label="Satisfaction breakdown">
+            <ng-container *ngFor="let s of insights.satisfaction">
+                <span *ngIf="s.count" [style.flex-grow]="s.count" [style.background]="moodColor(s.label)"
+                      [title]="s.label + ': ' + s.count"></span>
+            </ng-container>
+        </div>
+        <ul class="legend">
+            <li *ngFor="let s of insights.satisfaction">
+                <span class="dot" [style.background]="moodColor(s.label)"></span>
+                <span class="legendLabel">{{s.label}}</span>
+                <span class="legendValue">{{s.count}} · {{s.percent}}%</span>
+            </li>
+        </ul>
+    </article>
+
+    <article class="chartCard">
+        <h3>Best service votes</h3>
+        <ul class="bars">
+            <li *ngFor="let s of insights.services">
+                <div class="barHead"><span>{{s.label}}</span><span>{{s.count}}</span></div>
+                <div class="bar"><span [style.width.%]="s.percent"></span></div>
+            </li>
+        </ul>
+    </article>
+
+    <article class="chartCard">
+        <h3>Ratings</h3>
+        <ul class="bars compact">
+            <li *ngFor="let r of insights.ratings" class="ratingRow">
+                <span class="ratingLabel">{{r.label}} <i class="pi pi-star-fill"></i></span>
+                <div class="bar amber"><span [style.width.%]="r.percent"></span></div>
+                <span class="ratingCount">{{r.count}}</span>
+            </li>
+        </ul>
+    </article>
+</section>
+
+<ng-template #noFeedback>
+    <section class="emptyInsights">
+        <i class="pi pi-chart-bar"></i>
+        <p>Charts appear here once you record the first piece of feedback.</p>
+    </section>
+</ng-template>
